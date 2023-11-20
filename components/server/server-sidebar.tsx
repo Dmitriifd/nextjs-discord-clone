@@ -10,6 +10,7 @@ import { db } from '@/lib/db';
 import { ServerHeader } from './server-header';
 import { ServerSearch } from './server-search';
 import { ServerSection } from './server-section';
+import { ServerChannel } from './server-channel';
 
 interface ServerSidebarProps {
   serverId: string;
@@ -134,6 +135,16 @@ export const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               role={role}
               label='Text Channels'
             />
+            <div className='space-y-[2px]'>
+              {textChannels.map((channel) => (
+                <ServerChannel
+                  key={channel.id}
+                  channel={channel}
+                  role={role}
+                  server={server}
+                />
+              ))}
+            </div>
           </div>
         )}
       </ScrollArea>
